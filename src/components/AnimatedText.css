@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.animated-text-container {
+  background-color: #1b1b1b;
+  color: white;
+  height: 100vh;
+  padding: 4rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  max-width: 600px;
+  line-height: 1.4;
+  font-size: 3rem;
+  letter-spacing: 5px;
+}
+
+.lineParent {
+  display: block;
+  overflow: hidden;
+}
+
+.char {
+  display: inline-block;
+}

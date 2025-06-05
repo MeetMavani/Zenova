@@ -1,0 +1,38 @@
+<svg class="ll-logo-text" viewBox="0 0 246 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_194_2)">
+        <mask id="mask0_194_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="60" height="60">
+            <rect width="60" height="60" fill="white"/>
+        </mask>
+        <g mask="url(#mask0_194_2)">
+            <path class="js-letter" data-prop="yPercent" data-start="100.1" data-end="0" d="M0 0H29V30.9998C29 47.016 16.0163 59.9998 0 59.9998V0Z" fill="currentColor" data-svg-origin="14.5 29.999900817871094" transform="matrix(1,0,0,1,0,0)" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"/>
+            <path class="js-letter" data-prop="yPercent" data-start="0" data-end="-100.1" d="M0 0H29V30.9998C29 47.016 16.0163 59.9998 0 59.9998V0Z" fill="currentColor" data-svg-origin="14.5 29.999900817871094" transform="matrix(1,0,0,1,0,-60.0598)" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"/>
+            <path class="js-letter" data-prop="yPercent" data-start="-100.1" data-end="0" d="M60 60H31V29.0002C31 12.984 43.9837 0.00024274 60 0.000244141V60Z" fill="currentColor" data-svg-origin="45.5 30.00012207069085" transform="matrix(1,0,0,1,0,0)" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"/>
+            <path class="js-letter" data-prop="yPercent" data-start="0" data-end="100.1" d="M60 60H31V29.0002C31 12.984 43.9837 0.00024274 60 0.000244141V60Z" fill="currentColor" data-svg-origin="45.5 30.00012207069085" transform="matrix(1,0,0,1,0,60.05976)" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"/>
+        </g>
+        <mask id="mask1_194_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="62" y="0" width="60" height="60">
+            <rect x="62" width="60" height="60" fill="white"/>
+        </mask>
+        <g mask="url(#mask1_194_2)">
+            <path class="js-letter" data-prop="scale" data-start="0" data-end="1" fill-rule="evenodd" clip-rule="evenodd" d="M91.9999 59.9998C108.568 59.9998 122 46.5684 122 29.9999C122 13.4314 108.568 0 91.9999 0C75.4314 0 62 13.4314 62 29.9999C62 46.5684 75.4314 59.9998 91.9999 59.9998ZM91.9999 37.3126C96.0384 37.3126 99.3123 34.0388 99.3123 30.0003C99.3123 25.9617 96.0384 22.6879 91.9999 22.6879C87.9614 22.6879 84.6875 25.9617 84.6875 30.0003C84.6875 34.0388 87.9614 37.3126 91.9999 37.3126Z" fill="currentColor" data-svg-origin="92 29.999900817871094" transform="matrix(1,0,0,1,0,0)" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"/>
+            <path class="js-letter" data-prop="scale" data-start="1" data-end="6" fill-rule="evenodd" clip-rule="evenodd" d="M91.9999 59.9998C108.568 59.9998 122 46.5684 122 29.9999C122 13.4314 108.568 0 91.9999 0C75.4314 0 62 13.4314 62 29.9999C62 46.5684 75.4314 59.9998 91.9999 59.9998ZM91.9999 37.3126C96.0384 37.3126 99.3123 34.0388 99.3123 30.0003C99.3123 25.9617 96.0384 22.6879 91.9999 22.6879C87.9614 22.6879 84.6875 25.9617 84.6875 30.0003C84.6875 34.0388 87.9614 37.3126 91.9999 37.3126Z" fill="currentColor" data-svg-origin="92 29.999900817871094" transform="matrix(6,0,0,6,-460,-149.9995)" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"/>
+        </g>
+        <mask id="mask2_194_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="124" y="0" width="60" height="60">
+            <rect x="124" width="60" height="60" fill="white"/>
+        </mask>
+        <g mask="url(#mask2_194_2)">
+            <path class="js-letter" data-prop="yPercent" data-start="100.1" data-end="0" d="M124 14.5C124 6.49187 130.492 0 138.5 0C146.508 0 153 6.49187 153 14.5V60H124V14.5Z" fill="currentColor" data-svg-origin="138.5 30" transform="matrix(1,0,0,1,0,0)" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"/>
+            <path class="js-letter" data-prop="yPercent" data-start="0" data-end="-100.1" d="M124 14.5C124 6.49187 130.492 0 138.5 0C146.508 0 153 6.49187 153 14.5V60H124V14.5Z" fill="currentColor" data-svg-origin="138.5 30" transform="matrix(1,0,0,1,0,-60.06)" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"/>
+            <path class="js-letter" data-prop="yPercent" data-start="-100.1" data-end="0" d="M155 14.5C155 6.49187 161.492 0 169.5 0C177.508 0 184 6.49187 184 14.5V60H155V14.5Z" fill="currentColor" data-svg-origin="169.5 30" transform="matrix(1,0,0,1,0,0)" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"/>
+            <path class="js-letter" data-prop="yPercent" data-start="0" data-end="100.1" d="M155 14.5C155 6.49187 161.492 0 169.5 0C177.508 0 184 6.49187 184 14.5V60H155V14.5Z" fill="currentColor" data-svg-origin="169.5 30" transform="matrix(1,0,0,1,0,60.06)" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"/>
+        </g>
+        <mask id="mask3_194_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="186" y="0" width="60" height="60">
+            <rect x="186" width="60" height="60" fill="white"/>
+        </mask>
+        <g mask="url(#mask3_194_2)">
+            <path class="js-letter" data-prop="xPercent" data-start="-100.1" data-end="0" d="M186 29C186 12.9837 198.984 2.05514e-06 215 1.35505e-06L246 0V29H186Z" fill="currentColor" data-svg-origin="216 14.5" transform="matrix(1,0,0,1,0,0)" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"/>
+            <path class="js-letter" data-prop="xPercent" data-start="0" data-end="100.1" d="M186 29C186 12.9837 198.984 2.05514e-06 215 1.35505e-06L246 0V29H186Z" fill="currentColor" data-svg-origin="216 14.5" transform="matrix(1,0,0,1,60.06,0)" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"/>
+            <path class="js-letter" data-prop="xPercent" data-start="100.1" data-end="0" d="M215 60C198.984 60 186 47.0163 186 31H246V60H215Z" fill="currentColor" data-svg-origin="216 45.5" transform="matrix(1,0,0,1,0,0)" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"/>
+            <path class="js-letter" data-prop="xPercent" data-start="0" data-end="-100.1" d="M215 60C198.984 60 186 47.0163 186 31H246V60H215Z" fill="currentColor" data-svg-origin="216 45.5" transform="matrix(1,0,0,1,-60.06,0)" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"/>
+        </g>
+    </g>
+</svg>
