@@ -106,6 +106,12 @@ const Footer = () => {
           <div className="text-white text-6xl font-bold">
             CREATIVE STUDIO
           </div>
+          <div className="text-white text-6xl font-bold">
+            CREATIVE STUDIO
+          </div>
+          <div className="text-white text-6xl font-bold">
+            CREATIVE STUDIO
+          </div>
         </div>
       </div>
     </div>
