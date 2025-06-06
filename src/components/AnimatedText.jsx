@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import SplitType from 'split-type';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import './AnimatedText.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,20 +33,37 @@ const AnimatedText = () => {
             end: 'top 40%',
             scrub: true,
           },
-          delay: i * 0.15 // adds a small delay between lines
+          delay: i * 0.15
         }
       );
     });
 
+    // Add custom styles for SplitType classes
+    const style = document.createElement('style');
+    style.textContent = `
+      .lineParent {
+        display: block;
+        overflow: hidden;
+      }
+      .char {
+        display: inline-block;
+      }
+    `;
+    document.head.appendChild(style);
+
     return () => {
       split.revert();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      document.head.removeChild(style);
     };
   }, []);
 
   return (
-    <div className="animated-text-container">
-      <h1 ref={textRef}>
+    <div className="bg-[#1b1b1b] text-white h-[80vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 overflow-hidden font-sans">
+      <h1
+        ref={textRef}
+        className="sm:max-w-3xl lg:max-w-4xl xl:max-w-5xl leading-relaxed sm:leading-snug text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-wider sm:tracking-widest break-words text-center"
+      >
         Here at Zenova, we have been achieving design excellence and elegance since 2025.
       </h1>
     </div>
