@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scroll Synced Video Cards</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      overflow-x: hidden;
+      background: #f0f0f0;
+    }
+
+    .horizontal-headings {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .inner-track {
+      display: flex;
+      gap: 10vw;
+      align-items: center;
+      transition: transform 0.3s ease-out;
+      padding: 0 5vw;
+    }
+
+    .inner-track h1 {
+      font-size: clamp(1.5rem, 4vw, 3rem); /* Smaller heading text */
+      margin: 0;
+      opacity: 0.2;
+      white-space: nowrap;
+      transition: opacity 0.3s ease;
+    }
+
+    .vertical-sections {
+      margin-top: 100vh;
+      padding-bottom: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 200px;
+    }
+
+    .card {
+      width: 80vw;
+      max-width: 700px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+
+    .card video {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        width: 90vw;
+      }
+      .inner-track {
+        gap: 6vw;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Horizontal Headings -->
+  <div class="horizontal-headings">
+    <div class="inner-track">
+      <h1>Fiction</h1>
+      <h1>Documentary</h1>
+      <h1>Shorts</h1>
+      <h1>Art</h1>
+    </div>
+  </div>
+
+  <!-- Vertical Video Cards -->
+  <div class="vertical-sections">
+    <div class="card" data-title="0">
+      <video autoplay muted loop playsinline>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="card" data-title="1">
+      <video autoplay muted loop playsinline>
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="card" data-title="2">
+      <video autoplay muted loop playsinline>
+        <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="card" data-title="3">
+      <video autoplay muted loop playsinline>
+        <source src="https://media.istockphoto.com/id/1191575958/video/artistic-light-abstract-background.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
+  <!-- GSAP and ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const headings = document.querySelectorAll(".inner-track h1");
+    const track = document.querySelector(".inner-track");
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach((card, index) => {
+      ScrollTrigger.create({
+        trigger: card,
+        start: "center center",
+        end: "center center",
+        onEnter: () => moveHeadings(index),
+        onEnterBack: () => moveHeadings(index),
+      });
+
+      gsap.to(card, {
+        scale: 1.1,
+        scrollTrigger: {
+          trigger: card,
+          start: "center center",
+          end: "center center",
+          scrub: true,
+          toggleActions: "play reverse play reverse",
+          onEnter: () => card.style.zIndex = 2,
+          onLeave: () => card.style.zIndex = 1,
+          onLeaveBack: () => card.style.zIndex = 1,
+          onEnterBack: () => card.style.zIndex = 2,
+        }
+      });
+    });
+
+    function moveHeadings(index) {
+      const gap = parseFloat(getComputedStyle(document.querySelector(".inner-track")).gap);
+      const headingWidth = headings[index].offsetWidth;
+      const moveX = -index * (headingWidth + gap);
+      gsap.to(track, {
+        x: moveX,
+        ease: "power2.out",
+        duration: 0.8
+      });
+
+      headings.forEach((h, i) => {
+        h.style.opacity = i === index ? "1" : "0.2";
+      });
+    }
+  </script>
+</body>
+</html>

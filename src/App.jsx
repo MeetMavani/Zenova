@@ -8,6 +8,7 @@ import LoaderComponent from './components/LoaderComponent';
 import MagicClothesChange from './components/MagicClothesChange';
 import Footer from './components/Footer';
 import HeroBanner from './components/HeroBanner';
+import Work from './components/Work';
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -23,6 +24,7 @@ function App() {
           {/* <MagicClothesChange /> */}
           <SideScrollServices />
           <AnimatedText />
+          <Work />
           <BlogSection />
           <Footer />
         </>

@@ -54,7 +54,7 @@ function Video() {
                         className="w-full h-full object-cover"
                         ></video>
 
-                    <div  className='min-h-screen w-full bg-amber-600'/>
+                    <div  className='min-h-screen w-full bg-blue-200'/>
                 </div>
                 
                 <div className="h-full absolute top-0 left-0 right-0 bg-black select-none mix-blend-multiply flex items-center justify-center">
