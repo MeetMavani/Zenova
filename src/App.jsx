@@ -8,9 +8,10 @@ import MenuCube from './components/MenuCube';
 import LoaderComponent from './components/LoaderComponent';
 import MagicClothesChange from './components/MagicClothesChange';
 import Footer from './components/Footer';
+import Banner from './components/Banner';
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
       {!loading && (
         <>
           <MagicClothesChange />
+          <Banner />
           <SideScrollServices />
           <AnimatedText />
           <BlogSection />

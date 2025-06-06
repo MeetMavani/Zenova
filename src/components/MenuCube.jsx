@@ -99,7 +99,7 @@ const MenuCube = () => {
       <div className="overlay max-w-screen" ref={overlayRef}>
         <div
           ref={textRef}
-          className="flex flex-col items-start justify-center gap-6 pl-24 pt-32 text-white text-9xl"
+          className="flex flex-col items-start justify-center gap-6 px-6 sm:px-12 md:pl-24 pt-24 sm:pt-32 text-white text-4xl sm:text-6xl md:text-8xl lg:text-9xl"
         >
           {menuItems.map((label, index) => (
             <div
@@ -107,7 +107,7 @@ const MenuCube = () => {
               ref={(el) => (itemRefs.current[index] = el)}
               className={`cursor-pointer transition-transform duration-300 ease-out ${
                 label === "home"
-                  ? "italic font-serif text-blue-400 text-9xl"
+                  ? "italic font-serif text-blue-400"
                   : "uppercase font-extrabold"
               }`}
             >
