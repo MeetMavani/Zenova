@@ -69,7 +69,40 @@ const Footer = () => {
         </div>
 
         {/* Red background content (visible when panel tilts) */}
-        <div className="absolute inset-0 z-10 flex items-center justify-center">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
+          <div className="text-white text-6xl font-bold">
+            CREATIVE STUDIO
+          </div>
+          <div className="text-white text-6xl font-bold">
+            CREATIVE STUDIO
+          </div>
+          <div className="text-white text-6xl font-bold">
+            CREATIVE STUDIO
+          </div>
+          <div className="text-white text-6xl font-bold">
+            CREATIVE STUDIO
+          </div>
+          <div className="text-white text-6xl font-bold">
+            CREATIVE STUDIO
+          </div>
+          <div className="text-white text-6xl font-bold">
+            CREATIVE STUDIO
+          </div>
+          <div className="text-white text-6xl font-bold">
+            CREATIVE STUDIO
+          </div>
+          <div className="text-white text-6xl font-bold">
+            CREATIVE STUDIO
+          </div>
+          <div className="text-white text-6xl font-bold">
+            CREATIVE STUDIO
+          </div>
+          <div className="text-white text-6xl font-bold">
+            CREATIVE STUDIO
+          </div>
+          <div className="text-white text-6xl font-bold">
+            CREATIVE STUDIO
+          </div>
           <div className="text-white text-6xl font-bold">
             CREATIVE STUDIO
           </div>

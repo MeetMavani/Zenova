@@ -23,7 +23,7 @@ const Work = () => {
       // Fade headings in/out based on section visibility
       if (sectionRef.current) {
         const sectionRect = sectionRef.current.getBoundingClientRect();
-        const isVisible = sectionRect.top + 450 < windowHeight && sectionRect.bottom > 0;
+        const isVisible = sectionRect.top + 450 < windowHeight && sectionRect.bottom - 500 > 0;
 
         if (trackRef.current) {
           trackRef.current.style.opacity = isVisible ? '1' : '0';
