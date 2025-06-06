@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <MenuCube />
-      {loading && <LoaderComponent onFinish={() => setLoading(false)} />}
+      {loading && <LoaderComponent onFinish={() => setLoading(true)} />}
 
       {!loading && (
         <>
