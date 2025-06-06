@@ -48,19 +48,19 @@ body {
 }
 .right {
   transform: rotateY(90deg) translateZ(40px);
-  background: rgb(111, 174, 210);
+  background: rgb(141, 218, 55);
 }
 .left {
   transform: rotateY(-90deg) translateZ(40px);
-  background: rgb(111, 174, 210);
+  background: rgb(141, 218, 55);
 }
 .top {
   transform: rotateX(90deg) translateZ(40px);
-  background: rgb(111, 174, 210);
+  background: rgb(141, 218, 55);
 }
 .bottom {
   transform: rotateX(-90deg) translateZ(40px);
-  background: rgb(111, 174, 210);
+  background: rgb(141, 218, 55);
 }
 
 .overlay {
