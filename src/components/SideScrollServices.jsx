@@ -226,7 +226,7 @@ const SideScrollServices = () => {
                     </h3>
                     
                     {/* Description */}
-                    <p className="slide-text text-lg lg:text-xl text-black/80 max-w-md leading-relaxed">
+                    <p className="slide-text text-lg lg:text-xl text-black/80 leading-relaxed">
                       {slide.text}
                     </p>
                     
@@ -248,23 +248,6 @@ const SideScrollServices = () => {
               </div>
             );
           })}
-        </div>
-        
-        {/* Scroll progress indicator */}
-        <div className="absolute bottom-8 left-8 z-20">
-          <div className="flex space-x-2">
-            {slidesData.map((_, index) => (
-              <div
-                key={index}
-                className="w-8 h-0.5 bg-black/20 overflow-hidden"
-              >
-                <div 
-                  className="progress-bar h-full bg-black/60 origin-left"
-                  style={{ transform: 'scaleX(0)' }}
-                />
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </div>
