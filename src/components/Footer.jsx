@@ -30,12 +30,12 @@ const Footer = () => {
       const animation = gsap.to(letsTalkPanel, {
         scrollTrigger: {
           trigger: container,
-          start: "top center+=200",
+          start: "bottom bottom+=200",
           end: "bottom top-=300",
           scrub: true,
         },
         rotateZ: -12,
-        y: "-120%",
+        y: "-80%",
         ease: "power1.out",
       });
 
