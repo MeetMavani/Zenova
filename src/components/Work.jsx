@@ -1,11 +1,14 @@
 import { useEffect, useRef } from 'react';
 import vid from '../assets/intro-video.mp4'; // Example video import, adjust path as needed
 
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 const Work = () => {
   const trackRef = useRef(null);
-  const headingsRef = useRef([]);
-  const cardsRef = useRef([]);
-  const sectionRef = useRef(null); // New ref for video section
+  const headingRefs = useRef([]);
+  const sectionRefs = useRef([]);
+  const cardRefs = useRef([]);
 
   const headings = ['Fiction', 'Documentary', 'Shorts', 'Art'];
   const videos = [
@@ -16,112 +19,153 @@ const Work = () => {
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
+    gsap.registerPlugin(ScrollTrigger);
 
-      // Fade headings in/out based on section visibility
-      if (sectionRef.current) {
-        const sectionRect = sectionRef.current.getBoundingClientRect();
-        const isVisible = sectionRect.top + 450 < windowHeight && sectionRect.bottom - 500 > 0;
-
-        if (trackRef.current) {
-          trackRef.current.style.opacity = isVisible ? '1' : '0';
-          trackRef.current.style.pointerEvents = isVisible ? 'auto' : 'none';
+    const updateActive = (index) => {
+      // Update heading states
+      headingRefs.current.forEach((el, i) => {
+        if (el) {
+          if (i === index) {
+            el.classList.add('text-gray-900', 'font-bold', 'scale-130');
+            el.classList.remove('text-gray-400', 'font-normal', 'scale-60');
+          } else {
+            el.classList.add('text-gray-400', 'font-normal', 'scale-60');
+            el.classList.remove('text-gray-900', 'font-bold', 'scale-130');
+          }
         }
+      });
+
+      // Update card states
+      cardRefs.current.forEach((card, i) => {
+        if (card) {
+          if (i === index) {
+            card.classList.add('scale-110', 'z-10');
+            card.classList.remove('scale-60');
+          } else {
+            card.classList.add('scale-60');
+            card.classList.remove('scale-110', 'z-10');
+          }
+        }
+      });
+
+      // Update track position
+      const centerOffset = window.innerWidth / 2;
+      const selectedHeading = headingRefs.current[index];
+      if (selectedHeading && trackRef.current) {
+        const headingRect = selectedHeading.getBoundingClientRect();
+        const headingCenter = headingRect.left + headingRect.width / 2;
+        const delta = centerOffset - headingCenter;
+
+        const currentTranslate = gsap.getProperty(trackRef.current, 'x') || 0;
+        gsap.to(trackRef.current, {
+          x: currentTranslate + delta,
+          duration: 0.6,
+          ease: 'power3.out',
+        });
       }
-
-      // Card animation logic
-      cardsRef.current.forEach((card, index) => {
-        if (!card) return;
-
-        const cardRect = card.getBoundingClientRect();
-        const cardCenter = cardRect.top + cardRect.height / 2;
-        const isActive = cardCenter >= windowHeight * 0.3 && cardCenter <= windowHeight * 0.7;
-
-        if (isActive) {
-          card.style.transform = 'scale(1.05)';
-          card.style.zIndex = '20';
-          moveHeadings(index);
-        } else {
-          card.style.transform = 'scale(0.9)';
-          card.style.zIndex = '10';
-        }
-      });
     };
 
-    const moveHeadings = (activeIndex) => {
-      if (!trackRef.current || !headingsRef.current[activeIndex]) return;
+    // Create scroll triggers for each section
+    sectionRefs.current.forEach((section, index) => {
+      if (section) {
+        ScrollTrigger.create({
+          trigger: section,
+          start: 'top center',
+          end: 'bottom center',
+          onEnter: () => updateActive(index),
+          onEnterBack: () => updateActive(index),
+        });
+      }
+    });
 
-      const vw = window.innerWidth;
-      const gap = vw * 0.1; // 10vw gap
-      const headingWidth = headingsRef.current[activeIndex].offsetWidth;
-      const moveX = -activeIndex * (headingWidth + gap);
-
-      trackRef.current.style.transform = `translateX(${moveX}px)`;
-
-      headingsRef.current.forEach((heading, i) => {
-        if (heading) {
-          heading.style.opacity = i === activeIndex ? '1' : '0.2';
+    // Fade out the header track when scrolling past the last section
+    if (sectionRefs.current[sectionRefs.current.length - 1]) {
+      ScrollTrigger.create({
+        trigger: sectionRefs.current[sectionRefs.current.length - 1],
+        start: 'bottom center',
+        end: 'bottom top',
+        onEnter: () => {
+          gsap.to(trackRef.current, { autoAlpha: 0, duration: 0.5, ease: 'power2.out' });
+        },
+        onLeaveBack: () => {
+          gsap.to(trackRef.current, { autoAlpha: 1, duration: 0.5, ease: 'power2.out' });
         }
       });
+    }
+
+    // Fade out the header track before the first section enters
+    if (sectionRefs.current[0]) {
+      ScrollTrigger.create({
+        trigger: sectionRefs.current[0],
+        start: 'top 40%', // Delay the fade-in
+        end: 'top center',
+        onEnter: () => {
+          gsap.to(trackRef.current, { autoAlpha: 1, duration: 0.5, ease: 'power2.out' });
+        },
+        onLeaveBack: () => {
+          gsap.to(trackRef.current, { autoAlpha: 0, duration: 0.5, ease: 'power2.out' });
+        }
+      });
+
+      // Ensure headers are visible if first section is already in view on mount
+      const rect = sectionRefs.current[0].getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        gsap.set(trackRef.current, { autoAlpha: 1 });
+      }
+    }
+
+    // Initialize first section as active
+    updateActive(0);
+
+    // Cleanup on unmount
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial trigger
-
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 overflow-x-hidden">
-      {/* Horizontal Headings */}
-      <div className="fixed top-1/2 left-0 transform -translate-y-1/2 w-full z-30 flex justify-center pointer-events-none">
-        <div
+    <div className="relative bg-gray-100 font-sans overflow-x-hidden">
+      {/* Background Track */}
+      <div className="fixed top-2/5 left-0 w-screen z-10 pointer-events-none overflow-hidden">
+        <div 
           ref={trackRef}
-          className="flex gap-[10vw] items-center transition-transform duration-700 ease-out px-[5vw] opacity-0 transition-opacity duration-500"
+          style={{ opacity: 0 }}
+          className="flex justify-center gap-32 transform translate-x-0 transition-transform duration-300 ease-out"
         >
           {headings.map((heading, index) => (
-            <h1
+            <div
               key={index}
-              ref={(el) => (headingsRef.current[index] = el)}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl m-0 opacity-20 whitespace-nowrap transition-opacity duration-300 font-bold text-gray-800"
+              ref={(el) => (headingRefs.current[index] = el)}
+              className="text-5xl md:text-6xl lg:text-7xl font-normal text-gray-400 transition-all duration-400 ease-in-out whitespace-nowrap transform scale-40"
             >
               {heading}
-            </h1>
+            </div>
           ))}
         </div>
       </div>
 
-      {/* Vertical Video Cards */}
-      <div
-        ref={sectionRef}
-        className="mt-[100vh] pb-[100vh] flex flex-col items-center gap-48 sm:gap-56 md:gap-64 lg:gap-72"
-      >
-        {videos.map((videoSrc, index) => (
+      {/* Video Sections */}
+      {videos.map((videoSrc, index) => (
+        <div
+          key={index}
+          ref={(el) => (sectionRefs.current[index] = el)}
+          className="h-screen flex justify-center items-center z-20 relative"
+          data-index={index}
+        >
           <div
-            key={index}
-            ref={(el) => (cardsRef.current[index] = el)}
-            className="w-[90vw] sm:w-[85vw] md:w-[80vw] lg:w-[75vw] xl:w-[70vw] max-w-4xl rounded-2xl overflow-hidden bg-black shadow-2xl transform scale-90 transition-all duration-300 z-10"
-            data-title={index}
+            ref={(el) => (cardRefs.current[index] = el)}
+            className="w-4/5 md:w-3/5 lg:w-1/2 aspect-video rounded-3xl overflow-hidden relative shadow-2xl transform scale-60 transition-transform duration-500 ease-in-out"
           >
             <video
+              src={videoSrc}
               autoPlay
               muted
               loop
-              playsInline
-              className="w-full h-auto block object-cover rounded-2xl"
-              onError={(e) => {
-                console.log(`Video ${index + 1} failed to load`);
-                e.target.style.display = 'none';
-              }}
-            >
-              <source src={videoSrc} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+              className="w-full h-full object-cover"
+            />
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 };
