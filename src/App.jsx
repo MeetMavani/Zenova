@@ -11,7 +11,7 @@ import HeroBanner from './components/HeroBanner';
 import Work from './components/Work';
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   return (
     <>

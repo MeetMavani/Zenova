@@ -176,7 +176,9 @@ const SideScrollServices = () => {
     });
 
     // Add snapping functionality, but allow it to be killed on last slide
-    let snapTrigger = ScrollTrigger.create({
+    let snapTrigger; // Declare first
+
+    snapTrigger = ScrollTrigger.create({
       snap: {
         snapTo: (progress, self) => {
           let panelStarts = tops.map(st => st.start);

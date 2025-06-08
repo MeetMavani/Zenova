@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { ArrowRight, Clock, Calendar } from 'lucide-react';
 
 // Mock data for demonstration - replace with your actual import
